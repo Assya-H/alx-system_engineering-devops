@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -name "*.gif" -exec basename {} \; | sed 's/\.gif$//' | tr '[:upper:]' '[:lower:]' | sort | sed 's/^/./'
+find . -type f -name "*.gif" -print0 | rev | cut -z -d / -f1 | cut -z -d . -f2- | rev | sort -fi | tr '\0' '\n'
